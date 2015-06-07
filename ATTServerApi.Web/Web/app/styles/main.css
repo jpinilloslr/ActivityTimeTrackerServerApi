@@ -1,0 +1,57 @@
+/* ==================================================
+   Loading screen
+================================================== */
+
+#overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: 0.5;
+    filter: alpha(opacity=10);
+    z-index: 1001;
+}
+
+#overlay #loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: url(../images/progress.gif) no-repeat;
+    width: 96px;
+    height: 96px;
+    z-index: 1000;
+}
+
+
+/* ==================================================
+   Admin table
+================================================== */
+
+
+
+.admin-menu td {
+    cursor: default;
+}
+
+.admin-menu>tbody>tr:hover  {
+    background: #d4d4d4 !important;
+}
+
+.admin-menu tr {
+    -webkit-transition: background 0.3s linear 0s;
+    -moz-transition: background 0.3s linear 0s;
+    -o-transition: background 0.3s linear 0s;
+    transition: background 0.3s linear 0s;
+}
+
+.empty-message {
+    background: #26292E;
+}
+
+.ctrls {
+    text-align: right;
+}
+
+

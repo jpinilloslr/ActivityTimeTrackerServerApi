@@ -1,0 +1,63 @@
+﻿<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title" ng-show="{{!item.id}}">Create</h3>
+        <h3 class="box-title" ng-show="{{item.id}}">Edit {{item.name}}</h3>
+    </div>
+
+    <form role="form" ng-submit="save()">
+        <div class="box-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" ng-model="item.name">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea class="form-control" ng-model="item.description" id="description" rows="9"></textarea>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    
+                    
+                    <div class="box-body" style="height: 300px; overflow-y: scroll; overflow-x: hidden">
+                        <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table class="admin-menu table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                                        <thead>
+                                            <tr role="row">
+                                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Name</th>
+                                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Name</th>
+                                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Description</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr role="row" ng-repeat="current in filterRules">
+                                                <td>
+                                                    <input type="checkbox" ng-checked="{{current.selected}}">
+                                                </td>
+                                                <td>
+                                                    {{current.name}}
+                                                </td>
+                                                <td>
+                                                    {{current.description}}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                                                                               
+                </div>
+            </div>
+        </div>
+
+        <div class="box-footer">
+            <button type="submit" class="btn btn-info" ng-show="{{item.id}}">Edit</button>
+            <button type="submit" class="btn btn-info" ng-show="{{!item.id}}">Create</button>
+            <button type="button" class="btn btn-default " onclick="history.back()">Cancel</button>
+        </div>
+    </form>
+</div>
