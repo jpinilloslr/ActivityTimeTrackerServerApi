@@ -2,36 +2,36 @@
     <div class="box-header with-border">
         <h3 class="box-title" ng-show="{{!item.id}}">Create</h3>
         <h3 class="box-title" ng-show="{{item.id}}">Edit {{item.name}}</h3>
-    </div>
- 
-    <form role="form" ng-submit="save()">
-        <div class="box-body">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" ng-model="item.name">
+    </div>        
+
+        <form role="form" ng-submit="save()">
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" ng-model="item.name">
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea class="form-control" ng-model="item.description" id="description" rows="9"></textarea>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="description">Description</label>
-                        <textarea class="form-control" ng-model="item.description" id="description" rows="9"></textarea>
-                    </div>
-                </div>
-                <div class="col-md-6">                    
-                    <div class="form-group">
-                        <label for="description">Expression</label>
-                        <textarea class="form-control" ng-model="item.expression" id="expression" rows="13"></textarea>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="description">Expression</label>
+                            <textarea class="form-control" ng-model="item.expression" id="expression" rows="13"></textarea>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="box-footer">            
-            <button type="submit" class="btn btn-info" ng-show="{{item.id}}">Edit</button>
-            <button type="submit" class="btn btn-info" ng-show="{{!item.id}}">Create</button>
-            <button type="button" class="btn btn-default " onclick="history.back()">Cancel</button>
-        </div>
-    </form>
+
+            <div class="box-footer">
+                <button type="submit" class="btn btn-info" ng-show="{{item.id}}">Edit</button>
+                <button type="submit" class="btn btn-info" ng-show="{{!item.id}}">Create</button>
+                <button type="button" class="btn btn-default " onclick="history.back()">Cancel</button>
+            </div>
+        </form>
 </div>
 
 

@@ -1,17 +1,21 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using ATTServerApi.Data.Contracts;
 using ATTServerApi.Model;
+using ATTServerApi.Services.Contracts;
 
 namespace ATTServerApi.Web.Controllers
 {
     public class FilterRuleController : BaseApiController
     {
+        private readonly IActivityQueryExecuter _activityQueryExecuter;
 
-        public FilterRuleController(IAttUow uow)
+        public FilterRuleController(IAttUow uow, IActivityQueryExecuter activityQueryExecuter)
         {
             Uow = uow;
+            _activityQueryExecuter = activityQueryExecuter;
         }
 
         // GET api/filterrule
@@ -30,6 +34,26 @@ namespace ATTServerApi.Web.Controllers
         public HttpResponseMessage Post(FilterRule filterRule)
         {
             var item = Uow.FilterRules.GetById(filterRule.Id);
+
+            _activityQueryExecuter.Query(new List<Activity>().AsQueryable(), filterRule.Expression);
+            var compilerResults = _activityQueryExecuter.CompilerResults;
+
+            if (compilerResults.Errors.Count > 0)
+            {
+                var response = new HttpResponseMessage(HttpStatusCode.NotAcceptable);
+                var reason = "Invalid expression: ";
+
+                foreach (var error in compilerResults.Errors)
+                {
+                    var currentError = error.ToString();
+                    currentError = currentError.Substring(currentError.IndexOf("error", System.StringComparison.Ordinal));
+                    currentError = currentError.Substring(currentError.IndexOf(":", System.StringComparison.Ordinal) + 1);
+
+                    reason += "<br/>-" + currentError ;
+                }
+                response.ReasonPhrase = reason;
+                return response;
+            }
 
             //update
             if (null != item)

@@ -9,6 +9,20 @@
         if(item !== null)
             $scope.item = item;
 
+        var errorHandler = function(reason) {
+            ProgressWidget.hide();
+            var msgs = reason.statusText.split("|");
+            $scope.errors = new Array();
+            var current = "";
+            
+            for (i in msgs) {
+                current = msgs[i].trim();
+                if(current.length > 0)
+                    $scope.errors.push(current);
+            }        
+
+        };
+
         $scope.save = function() {
             ProgressWidget.show();
             $scope.item.$save(function(item) {

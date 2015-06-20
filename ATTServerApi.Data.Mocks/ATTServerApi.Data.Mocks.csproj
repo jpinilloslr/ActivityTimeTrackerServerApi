@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MockActivityQueryExecuter.cs" />
     <Compile Include="MockAttUow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\MockActivityConceptRepository.cs" />
@@ -53,6 +54,10 @@
     <ProjectReference Include="..\ATTServerApi.Model\ATTServerApi.Model.csproj">
       <Project>{448D9ECB-4D79-492B-80F6-99091446D7AF}</Project>
       <Name>ATTServerApi.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ATTServerApi.Services.Contracts\ATTServerApi.Services.Contracts.csproj">
+      <Project>{A12A869E-18CA-4337-B08C-3274076DF79A}</Project>
+      <Name>ATTServerApi.Services.Contracts</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

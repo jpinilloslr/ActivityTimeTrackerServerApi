@@ -2,8 +2,7 @@
     var mainModule = angular.module("att.main", ["ngRoute", 'att.services', 'att.directives']);
     var services = angular.module('att.services', ['ngResource']);
     var directives = angular.module('att.directives', []);
-
-
+    
     var config = function ($routeProvider) {
 
         $routeProvider

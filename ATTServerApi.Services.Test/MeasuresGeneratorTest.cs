@@ -1,5 +1,4 @@
-﻿using System;
-using ATTServerApi.Data.Mocks;
+﻿using ATTServerApi.Data.Mocks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ATTServerApi.Services.Test
@@ -10,7 +9,7 @@ namespace ATTServerApi.Services.Test
 
         private MeasuresGenerator GetTarget()
         {
-            return new MeasuresGenerator(new MockAttUow());
+            return new MeasuresGenerator(new MockAttUow(), new MockActivityQueryExecuter());
         }
 
         [TestMethod]

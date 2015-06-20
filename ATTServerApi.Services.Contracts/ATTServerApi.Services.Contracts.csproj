@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IActivityQueryExecuter.cs" />
     <Compile Include="IMeasureHistoryGenerator.cs" />
     <Compile Include="IMeasuresGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

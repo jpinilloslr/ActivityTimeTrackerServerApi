@@ -3,7 +3,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using ATTServerApi.Web.App_Start;
-using ATTServerApi.Web.Configuration;
+using ATTServerApi.Web.Security;
 
 namespace ATTServerApi.Web
 {

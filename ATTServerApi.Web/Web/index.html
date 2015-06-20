@@ -79,10 +79,12 @@
         
             <div class="content-wrapper">
 
-                <!-- Main content -->
-            
-                <section class="content" ng-view>
-  
+                
+                <!-- Main content -->            
+                <section class="content" >
+                    <div id="notifier">
+                    </div>
+                    <div ng-view></div>
                 </section><!-- /.content -->
             </div><!-- /.content-wrapper -->
             <footer class="main-footer">
@@ -122,14 +124,17 @@
         <script src="app/scripts/vendors/angular/angular-resource.min.js"></script>
         <script src="app/scripts/app.js"></script>
 
-        <!-- Services -->
+        <!-- Services -->        
+        <script src="app/scripts/services/user_identity.js"></script>
         <script src="app/scripts/services/measure.js"></script>
         <script src="app/scripts/services/filter_rule.js"></script>
         <script src="app/scripts/services/activity_concept.js"></script>
         <script src="app/scripts/services/progress_widget.js"></script>
+        <script src="app/scripts/services/notifier.js"></script>
+        <script src="app/scripts/services/response_interceptor.js"></script>                
         <!-- End Services -->
 
-        <script src="app/scripts/directives/directives.js"></script>
+        <script src="app/scripts/directives/butterbar.js"></script>
 
         <!-- Controllers -->
         <script src="app/scripts/controllers/MenuController.js"></script>
@@ -139,11 +144,13 @@
         <script src="app/scripts/controllers/FilterRuleController.js"></script>
         <script src="app/scripts/controllers/DashboardController.js"></script>
         <!-- End Controllers -->
+
         <!-- Highcharts -->
         <script src="app/scripts/vendors/highcharts/highcharts.js"></script>
         <script src="app/scripts/vendors/highcharts/highcharts-more.js"></script>
         <script src="app/scripts/vendors/highcharts/modules/solid-gauge.js"></script>
         <!-- End Highcharts -->
+
         <!-- Dashboard -->
         <script src="app/scripts/dashboard/gadgets.js"></script>
         <!-- End Dashboard -->

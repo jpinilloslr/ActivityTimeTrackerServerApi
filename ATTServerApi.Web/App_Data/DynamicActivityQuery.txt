@@ -1,0 +1,31 @@
+﻿using System;                                                                    
+using System.Linq;                                                              
+using ATTServerApi.Model;                                                      
+using System.Collections.Generic;                                            
+using System.Text.RegularExpressions;                                           
+                                                                               
+namespace ATTServerApi.Services                                                 
+{                                                                               
+   public class DynamicActivityQuery                                             
+   {                                                                             
+                                                                                 
+       private bool RegExp(string value, string regexp)                          
+       {                                                                         
+           var result = false;                                                   
+           if(!String.IsNullOrEmpty(value) && !String.IsNullOrEmpty(regexp))     
+           {                                                                     
+               var r = new Regex(regexp.Trim(), RegexOptions.IgnoreCase);      
+               result = r.IsMatch(value.Trim());                                
+           }                                                                     
+           return result;                                                       
+       }                                                                        
+                                                                                 
+       public IEnumerable<Activity> Query(IQueryable<Activity> activities)       
+       {                                                                       
+           return activities.Where(delegate(Activity activity)                  
+           {                                                                    
+               return !%query!%;                                             
+           });                                                                   
+       }                                                                         
+   }                                                                             
+}                                                                                

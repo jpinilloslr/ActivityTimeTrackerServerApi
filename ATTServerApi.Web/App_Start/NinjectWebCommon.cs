@@ -1,3 +1,4 @@
+using System.Web.Helpers;
 using System.Web.Http;
 using ATTServerApi.Data;
 using ATTServerApi.Data.Contracts;
@@ -63,8 +64,9 @@ namespace ATTServerApi.Web.App_Start
             var resolver = new NinjectDependencyResolver(kernel);
             GlobalConfiguration.Configuration.DependencyResolver = resolver;
 
-            kernel.Bind<IAttUow>().To<AttUow>();                        
+            kernel.Bind<IAttUow>().To<AttUow>();
             kernel.Bind<IMeasuresGenerator>().To<MeasuresGenerator>();
+            kernel.Bind<IActivityQueryExecuter>().To<ActivityQueryExecuter>();
         }        
     }
 }

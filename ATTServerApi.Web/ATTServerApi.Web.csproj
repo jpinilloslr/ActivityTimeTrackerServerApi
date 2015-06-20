@@ -151,6 +151,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\DynamicActivityQuery.txt" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\FormattersConfig.cs" />
@@ -178,9 +179,11 @@
     <Compile Include="Controllers\ActivityController.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Login.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\BasicAuthenticationMessageHandler.cs" />
   </ItemGroup>
@@ -260,6 +263,7 @@
     <Content Include="Web\app\images\progress.gif" />
     <Content Include="Web\app\images\progressBarAnim.gif" />
     <Content Include="Web\app\scripts\app.js" />
+    <Content Include="Web\app\scripts\controllers\LoginController.js" />
     <Content Include="Web\app\scripts\controllers\MenuController.js" />
     <Content Include="Web\app\scripts\controllers\ActivityConceptController.js" />
     <Content Include="Web\app\scripts\controllers\BaseEntityController.js" />
@@ -267,10 +271,13 @@
     <Content Include="Web\app\scripts\controllers\FilterRuleController.js" />
     <Content Include="Web\app\scripts\controllers\MainController.js" />
     <Content Include="Web\app\scripts\dashboard\gadgets.js" />
-    <Content Include="Web\app\scripts\directives\directives.js" />
+    <Content Include="Web\app\scripts\directives\butterbar.js" />
     <Content Include="Web\app\scripts\services\activity_concept.js" />
     <Content Include="Web\app\scripts\services\filter_rule.js" />
     <Content Include="Web\app\scripts\services\measure.js" />
+    <Content Include="Web\app\scripts\services\notifier.js" />
+    <Content Include="Web\app\scripts\services\user_identity.js" />
+    <Content Include="Web\app\scripts\services\response_interceptor.js" />
     <Content Include="Web\app\scripts\services\progress_widget.js" />
     <Content Include="Web\app\scripts\vendors\angular\angular-animate.js" />
     <Content Include="Web\app\scripts\vendors\angular\angular-animate.min.js" />
@@ -1384,6 +1391,7 @@
     <Content Include="Web\app\views\filterrule\form.html" />
     <Content Include="Web\app\views\filterrule\list.html" />
     <Content Include="Web\app\views\filterrule\view.html" />
+    <Content Include="Web\login.html" />
     <Content Include="Web\app\views\main.html" />
     <Content Include="Web\bootstrap\css\bootstrap.css" />
     <Content Include="Web\bootstrap\css\bootstrap.min.css" />
@@ -2300,7 +2308,6 @@
     <Content Include="Web\plugins\input-mask\phone-codes\phone-codes.json" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Web\app\scripts\vendors\angular\i18n\ngLocale\" />
     <Folder Include="Web\app\scripts\vendors\jQuery\ui\i18n\" />
     <Folder Include="Web\app\scripts\vendors\jQuery\ui\minified\" />

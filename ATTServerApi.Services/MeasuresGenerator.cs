@@ -10,12 +10,15 @@ namespace ATTServerApi.Services
     public class MeasuresGenerator : IMeasuresGenerator
     {
         private readonly IAttUow _attUow;
+        private readonly IActivityQueryExecuter _activityQueryExecuter;
 
         public List<Measure> Measures { get; private set; }
 
-        public MeasuresGenerator(IAttUow uow)
+        public MeasuresGenerator(IAttUow uow, IActivityQueryExecuter activityQueryExecuter)
         {
             _attUow = uow;
+            _activityQueryExecuter = activityQueryExecuter;
+
             Measures = new List<Measure>();
             var activityConcepts = _attUow.ActivityConcepts.GetAllWithRules().ToList();
 
@@ -36,15 +39,18 @@ namespace ATTServerApi.Services
             foreach (var filterRule in concept.Rules)
             {
                 try
-                {
-                    var sql = "SELECT * FROM Activities";
+                {                    
+                    var activities = _attUow.Activities.GetAll();
+                    var list = _activityQueryExecuter.Query(activities, filterRule.Expression).ToList();
+
+                    /*var sql = "SELECT * FROM Activities";
 
                     if (!String.IsNullOrEmpty(filterRule.Expression))
                     {
                         sql += " WHERE " + filterRule.Expression;
                     }
 
-                    var list = _attUow.Activities.GetBySQL(sql).ToList();
+                    var list = _attUow.Activities.GetBySQL(sql).ToList();*/
                     var time = list.Sum(m => m.Life);
                     measure.Time += time;
 
