@@ -1,27 +1,31 @@
 ﻿(function() {
     var mainModule = angular.module("att.main");
 
-    var LoginController = function ($scope, $resource, UserIdentity, $location) {
+    var LoginController = function ($scope, $resource, Authenticator) {
+        
+        $scope.buttonText = "Login";
+        $scope.identity = Authenticator.identity();
+
+        $scope.login = function() {
+            $scope.buttonText = "Logging in. . .";
+            Authenticator.login($scope.credentials.username, $scope.credentials.password).then(onSuccess, onError).finally(function() {
+                $scope.buttonText = "Login";
+            });
+        };
+        
+        $scope.logout = function () {
+            Authenticator.logout().then(function () {
+                window.location.href = "login.html";
+            });
+        };
 
         var onSuccess = function(data) {
-            UserIdentity.setIdentity(data);
-            $location.path("Web/index.html#/dashboard");
             window.location.href = ".";
         };
         
         var onError = function (error) {
-            console.log("success: " + error);
-        };
-        
-        $scope.login = {
-            username: "joaquin",
-            password: "knock123",
-        };
-
-        $scope.doLogin = function() {
-            var res = $resource('../api/user/:id', { id: '@id' });
-            res.save($scope.login, onSuccess, onError);
-        };
+            $scope.invalidLogin = true;
+        };        
     };
 
     mainModule.controller("LoginController", LoginController);

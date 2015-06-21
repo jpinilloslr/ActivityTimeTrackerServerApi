@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActivityQueryExecuter.cs" />
+    <Compile Include="AuthenticatorProvider.cs" />
     <Compile Include="MeasuresGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

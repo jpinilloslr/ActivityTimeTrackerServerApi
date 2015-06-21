@@ -67,6 +67,7 @@ namespace ATTServerApi.Web.App_Start
             kernel.Bind<IAttUow>().To<AttUow>();
             kernel.Bind<IMeasuresGenerator>().To<MeasuresGenerator>();
             kernel.Bind<IActivityQueryExecuter>().To<ActivityQueryExecuter>();
+            kernel.Bind<IAuthenticatorProvider>().To<AuthenticatorProvider>();
         }        
     }
 }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
+using ATTServerApi.Services.Contracts;
 
 namespace ATTServerApi.Web.Security
 {
@@ -13,6 +14,12 @@ namespace ATTServerApi.Web.Security
         public const string BasicScheme = "Basic";
         public const string ChallengeAuthenticationHeaderName = "WWW-Authenticate";
         public const char AuthorizationHeaderSeparator = ':';
+        private IAuthenticatorProvider _authenticatorProvider;
+
+        public BasicAuthenticationMessageHandler(IAuthenticatorProvider authenticatorProvider)
+        {
+            _authenticatorProvider = authenticatorProvider;
+        }
 
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
@@ -43,7 +50,7 @@ namespace ATTServerApi.Web.Security
             var username = credentialParts[0].Trim();
             var password = credentialParts[1].Trim();
 
-            if (username == "joaquin" && password == "knock123")
+            if (null != _authenticatorProvider.Login(username, password))
             {
                 var response = await base.SendAsync(request, cancellationToken);
                 return response;              

@@ -37,15 +37,39 @@
                     <!-- mini logo for sidebar mini 50x50 pixels -->
                     <span class="logo-mini"><b>A</b>TT</span>
                     <!-- logo for regular state and mobile devices -->
-                    <span class="logo-lg"><b>Admin</b>LTE</span>
+                    <span class="logo-lg"><b>A</b>TT</span>
                 </a>
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top" role="navigation">
 
                     <!-- Navbar Right Menu -->
                     <div class="navbar-custom-menu">
-                        
-                    </div>
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown user user-menu" style="cursor: default" ng-controller="LoginController">
+                                <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <img src="app/images/noavatar.png" class="user-image" alt="User Image">
+                                    <span class="hidden-xs">{{identity.name}} {{identity.firstname}}</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <!-- User image -->
+                                    <li class="user-header">
+                                        <img src="app/images/noavatar.png" class="img-circle" alt="User Image">
+                                        <p>
+                                            {{identity.name}} {{identity.firstname}} {{identity.lastname}}
+                                        </p>
+                                    </li>
+                                    
+                                    <!-- Menu Footer-->
+                                    <li class="user-footer">
+
+                                        <div class="pull-right">
+                                            <a ng-click="logout()" class="btn btn-default btn-flat">Sign out</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            </ul>
+</div>
                 </nav>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
@@ -122,10 +146,11 @@
         <script src="app/scripts/vendors/angular/angular.min.js"></script>
         <script src="app/scripts/vendors/angular/angular-route.min.js"></script>
         <script src="app/scripts/vendors/angular/angular-resource.min.js"></script>
+        <script src="app/scripts/vendors/angular/angular-cookies.min.js"></script>
         <script src="app/scripts/app.js"></script>
 
         <!-- Services -->        
-        <script src="app/scripts/services/user_identity.js"></script>
+        <script src="app/scripts/services/authenticator.js"></script>
         <script src="app/scripts/services/measure.js"></script>
         <script src="app/scripts/services/filter_rule.js"></script>
         <script src="app/scripts/services/activity_concept.js"></script>
@@ -137,6 +162,7 @@
         <script src="app/scripts/directives/butterbar.js"></script>
 
         <!-- Controllers -->
+        <script src="app/scripts/controllers/LoginController.js"></script>
         <script src="app/scripts/controllers/MenuController.js"></script>
         <script src="app/scripts/controllers/BaseEntityController.js"></script>
         <script src="app/scripts/controllers/MainController.js"></script>

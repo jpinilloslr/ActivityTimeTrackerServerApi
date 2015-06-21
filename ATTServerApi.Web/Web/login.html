@@ -27,27 +27,34 @@
         </div><!-- /.login-logo -->
         <div class="login-box-body">
             <p class="login-box-msg">Sign in to start your session</p>
-            <form ng-submit="doLogin()">
+            <form ng-submit="login()">
                 <div class="form-group has-feedback">
-                    <input  class="form-control" placeholder="Username" ng-model="login.username"/>
+                    <input class="form-control" placeholder="Username" ng-model="credentials.username" />
                     <span class="glyphicon glyphicon-user form-control-feedback"></span>
                 </div>
                 <div class="form-group has-feedback">
-                    <input type="password" class="form-control" placeholder="Password" ng-model="login.password" />
+                    <input type="password" class="form-control" placeholder="Password" ng-model="credentials.password" />
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
                 <div class="row">
                     <div class="col-xs-8">
                     </div><!-- /.col -->
                     <div class="col-xs-4">
-                        <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">{{buttonText}}</button>
                     </div><!-- /.col -->
                 </div>
             </form>
             <a href="#">I forgot my password</a><br>
             <a href="#" class="text-center">Register a new membership</a>
         </div><!-- /.login-box-body -->
+        <div class="alert alert-danger alert-dismissable" ng-show="invalidLogin">
+            
+            Access denied
+        </div>
     </div><!-- /.login-box -->
+    
+
+
     <!-- jQuery 2.1.4 -->
     <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.2 JS -->
@@ -57,10 +64,11 @@
     <script src="app/scripts/vendors/angular/angular.min.js"></script>
     <script src="app/scripts/vendors/angular/angular-route.min.js"></script>
     <script src="app/scripts/vendors/angular/angular-resource.min.js"></script>
+    <script src="app/scripts/vendors/angular/angular-cookies.min.js"></script>
     <script src="app/scripts/app.js"></script>
 
     <!-- Services -->
-    <script src="app/scripts/services/user_identity.js"></script>
+    <script src="app/scripts/services/authenticator.js"></script>
     <script src="app/scripts/services/measure.js"></script>
     <script src="app/scripts/services/filter_rule.js"></script>
     <script src="app/scripts/services/activity_concept.js"></script>

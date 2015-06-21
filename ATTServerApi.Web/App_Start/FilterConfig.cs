@@ -1,4 +1,7 @@
-﻿using System.Web.Mvc;
+﻿
+
+using System.Web.Mvc;
+using AuthorizeAttribute = System.Web.Http.AuthorizeAttribute;
 
 namespace ATTServerApi.Web
 {

@@ -175,11 +175,12 @@
     <Compile Include="Configuration\NinjectDependencyResolver.cs" />
     <Compile Include="Controllers\FilterRuleController.cs" />
     <Compile Include="Controllers\ActivityConceptController.cs" />
+    <Compile Include="Controllers\LogoutController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MeasureController.cs" />
     <Compile Include="Controllers\ActivityController.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -256,9 +257,11 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Web\app\images\avatar.png" />
     <Content Include="Web\app\images\big-progress.gif" />
     <Content Include="Web\app\images\dijitProgressBarAnim.gif" />
     <Content Include="Web\app\images\indeterminate_progress.gif" />
+    <Content Include="Web\app\images\noavatar.png" />
     <Content Include="Web\app\images\pbar-ani.gif" />
     <Content Include="Web\app\images\progress.gif" />
     <Content Include="Web\app\images\progressBarAnim.gif" />
@@ -276,6 +279,7 @@
     <Content Include="Web\app\scripts\services\filter_rule.js" />
     <Content Include="Web\app\scripts\services\measure.js" />
     <Content Include="Web\app\scripts\services\notifier.js" />
+    <Content Include="Web\app\scripts\services\authenticator.js" />
     <Content Include="Web\app\scripts\services\user_identity.js" />
     <Content Include="Web\app\scripts\services\response_interceptor.js" />
     <Content Include="Web\app\scripts\services\progress_widget.js" />

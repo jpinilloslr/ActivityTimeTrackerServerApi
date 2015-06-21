@@ -2,12 +2,14 @@
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web.Http;
+using System.Web.Mvc;
 using ATTServerApi.Data.Contracts;
 using ATTServerApi.Model;
 using ATTServerApi.Services.Contracts;
 
 namespace ATTServerApi.Web.Controllers
-{
+{    
     public class FilterRuleController : BaseApiController
     {
         private readonly IActivityQueryExecuter _activityQueryExecuter;

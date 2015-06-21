@@ -4,26 +4,36 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using ATTServerApi.Services.Contracts;
 using ATTServerApi.Web.Models;
 
 namespace ATTServerApi.Web.Controllers
 {
-    public class UserController : ApiController
+    public class LoginController : ApiController
     {
-        
-        // POST api/user
+        private readonly IAuthenticatorProvider _authenticatorProvider;
+
+        public LoginController(IAuthenticatorProvider authenticatorProvider)
+        {
+            _authenticatorProvider = authenticatorProvider;
+        }
+
         public HttpResponseMessage Post([FromBody]Login login)
         {
             var response = new HttpResponseMessage();
-            if (login.Username == "joaquin" && login.Password == "knock123")
+            var user = _authenticatorProvider.Login(login.Username, login.Password);
+
+            if (null != user)
             {
-                response.StatusCode = HttpStatusCode.Accepted;
+                response = Request.CreateResponse(HttpStatusCode.Accepted, user);
             }
             else
             {
                 response.StatusCode = HttpStatusCode.Forbidden;
             }
+
             return response;
         }
+
     }
 }

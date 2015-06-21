@@ -36,7 +36,7 @@ namespace ATTServerApi.Web.Controllers
         {
             foreach (var activity in activities)
             {
-                Uow.Activities.Add(activity);            
+                Uow.Activities.Add(activity);                  
             }
             Uow.Commit();
             return new HttpResponseMessage(HttpStatusCode.Created);

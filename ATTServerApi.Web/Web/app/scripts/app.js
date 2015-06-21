@@ -1,14 +1,22 @@
 ﻿(function() {
     var mainModule = angular.module("att.main", ["ngRoute", 'att.services', 'att.directives']);
-    var services = angular.module('att.services', ['ngResource']);
+    var services = angular.module('att.services', ['ngResource', 'ngCookies']);
     var directives = angular.module('att.directives', []);
+    
+    services.value('AUTH_ENDPOINT', '../api/login');
+    services.value('LOGOUT_ENDPOINT', '../api/logout');
     
     var config = function ($routeProvider) {
 
         $routeProvider
             .when("/", {
                 templateUrl: 'app/views/main.html',
-                controller: 'MainController'
+                controller: 'MainController',
+                resolve: {
+                    user: function(Authenticator, $q) {
+                        return Authenticator.identity() || $q.reject({ unAuthorized: true });
+                    }
+                }
             })
 
          /**************************************************
@@ -18,6 +26,9 @@
             .when('/activity_concepts', {
                 controller: 'ActivityConceptController',
                 resolve: {
+                    user: function (Authenticator, $q) {
+                        return Authenticator.identity() || $q.reject({ unAuthorized: true });
+                    },
                     item: function() {
                         return null;
                     },
@@ -33,6 +44,9 @@
             .when('/activity_concepts/edit/:activityConceptId', {
                 controller: 'ActivityConceptController',
                 resolve: {
+                    user: function (Authenticator, $q) {
+                        return Authenticator.identity() || $q.reject({ unAuthorized: true });
+                    },
                     item: function(ActivityConceptLoader) {
                         return ActivityConceptLoader();
                     },
@@ -48,6 +62,9 @@
             .when('/activity_concepts/view/:activityConceptId', {
                 controller: 'ActivityConceptController',
                 resolve: {
+                    user: function (Authenticator, $q) {
+                        return Authenticator.identity() || $q.reject({ unAuthorized: true });
+                    },
                     item: function(ActivityConceptLoader) {
                         return ActivityConceptLoader();
                     },
@@ -63,6 +80,9 @@
             .when('/activity_concepts/new', {
                 controller: 'ActivityConceptController',
                 resolve: {
+                    user: function (Authenticator, $q) {
+                        return Authenticator.identity() || $q.reject({ unAuthorized: true });
+                    },
                     item: function(ActivityConcept) {
                         return new ActivityConcept({});
                     },
@@ -83,6 +103,9 @@
             .when('/filter_rules', {
                 controller: 'FilterRuleController',
                 resolve: {
+                    user: function (Authenticator, $q) {
+                        return Authenticator.identity() || $q.reject({ unAuthorized: true });
+                    },
                     item: function() {
                         return null;
                     },
@@ -95,6 +118,9 @@
             .when('/filter_rules/edit/:filterRuleId', {
                 controller: 'FilterRuleController',
                 resolve: {
+                    user: function (Authenticator, $q) {
+                        return Authenticator.identity() || $q.reject({ unAuthorized: true });
+                    },
                     item: function(FilterRuleLoader) {
                         return FilterRuleLoader();
                     },
@@ -107,6 +133,9 @@
             .when('/filter_rules/view/:filterRuleId', {
                 controller: 'FilterRuleController',
                 resolve: {
+                    user: function (Authenticator, $q) {
+                        return Authenticator.identity() || $q.reject({ unAuthorized: true });
+                    },
                     item: function(FilterRuleLoader) {
                         return FilterRuleLoader();
                     },
@@ -119,6 +148,9 @@
             .when('/filter_rules/new', {
                 controller: 'FilterRuleController',
                 resolve: {
+                    user: function (Authenticator, $q) {
+                        return Authenticator.identity() || $q.reject({ unAuthorized: true });
+                    },
                     item: function(FilterRule) {
                         return new FilterRule({});
                     },
@@ -135,6 +167,9 @@
             .when('/dashboard', {
                 controller: 'DashboardController',
                 resolve: {
+                    user: function (Authenticator, $q) {
+                        return Authenticator.identity() || $q.reject({ unAuthorized: true });
+                    },
                     measures: function(MultiMeasureLoader) {
                         return MultiMeasureLoader();
                     }

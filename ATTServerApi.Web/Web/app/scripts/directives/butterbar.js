@@ -13,7 +13,10 @@
                 $rootScope.$on('$routeChangeSuccess', function() {
                     ProgressWidget.hide();
                 });
-                $rootScope.$on('$routeChangeError', function () {
+                $rootScope.$on('$routeChangeError', function (event, state, params, error) {
+                    if (error && error.unAuthorized) {
+                        location.href = "login.html";
+                    }
                     ProgressWidget.hide();
                 });
             }

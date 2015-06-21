@@ -17,6 +17,7 @@
                                 <thead>
                                     <tr role="row">
                                         <th>Name</th>
+                                        <th>Filters</th>
                                         <th colspan="2">Description</th>
                                     </tr>
                                 </thead>
@@ -24,6 +25,9 @@
                                     <tr role="row" ng-repeat="current in items" ng-click="edit(current.id)">
                                         <td>
                                             {{current.name}}
+                                        </td>
+                                        <td>
+                                            {{current.rules.length}}
                                         </td>
                                         <td>
                                             {{current.description}}
