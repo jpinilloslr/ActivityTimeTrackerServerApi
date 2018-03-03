@@ -3,6 +3,7 @@ using System.Linq;
 using System.Net;
 using ATTServerApi.Data.Mocks;
 using ATTServerApi.Model;
+using ATTServerApi.Services;
 using ATTServerApi.Web.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -15,7 +16,7 @@ namespace ATTServerApi.Web.Test.Controllers
 
         private FilterRuleController GetTarget()
         {
-            return new FilterRuleController(_mockUow);;
+            return new FilterRuleController(_mockUow, new ActivityQueryExecuter());;
         }
 
         [TestMethod]

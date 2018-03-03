@@ -28,7 +28,7 @@
         var projectsGraph = new DashboardGadget.StackedGraph();
         projectsGraph.setName("Projects");
         projectsGraph.setContainerId("slot4");
-        projectsGraph.setMeasures(getMeasuresByNames(["ATT Implementation", "Restaurant modeling", "Restaurant implementation", "BIAdviser", "Munchies Implementation"]));
+        projectsGraph.setMeasures(getMeasuresByNames(["ATT Implementation", "Restaurant modeling", "Restaurant implementation", "BIAdviser", "BIAdviser2"]));
 
         projectsGraph.setShowTotalTime(false);
         projectsGraph.setShowAccumulationTime(true);
